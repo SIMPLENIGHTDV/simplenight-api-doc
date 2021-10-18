@@ -1,4 +1,4 @@
-### Simplenight API documentation
+# Simplenight API documentation
 
 ## Public link to share
 
