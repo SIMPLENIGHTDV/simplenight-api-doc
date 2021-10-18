@@ -8,7 +8,7 @@ servers:
 
 info:
   version: "2.0"
-  title: Simplenight API
+  title: Simplenight API 
   "x-logo":
     {
       "url": "simplenight-logo.png",
