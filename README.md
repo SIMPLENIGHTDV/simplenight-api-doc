@@ -4,10 +4,6 @@
 
 https://simplenightdv.github.io/simplenight-api-doc/
 
-## Versions history
-
-After chages are done, we recommend to save a copy in *old_api_doc_versions_history* in case. Please name the file with the following format: *Simplenight-API-Doc-{yyyy}-{mm}-{dd}*
-
 ## How to edit the *swagger.yaml* file
 
 1. When in *https://github.com/SIMPLENIGHTDV/simplenight-api-doc*, press the dot button from your keyboard and an editor screen will open in the browser.
@@ -21,3 +17,7 @@ Because of the formatting the file has, I recommend using *Ctrl + F* to search t
 8. Optional: Check if the changes are done.
 
 If you need more details about this topic, you can check this [blog post](https://zeroesandones.medium.com/how-to-commit-and-push-your-changes-to-your-github-repository-in-vscode-77a7a3d7dd02).
+
+## Versions history
+
+After chages are done, we recommend to save a copy in *old_api_doc_versions_history* in case. Please name the file with the following format: *Simplenight-API-Doc-{yyyy}-{mm}-{dd}*
