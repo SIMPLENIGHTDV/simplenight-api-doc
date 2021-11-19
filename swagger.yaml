@@ -69,6 +69,30 @@ tags:
       requested, English will be returned as a fall back.  In bulk export
       methods, only locations with a localization will be returned when
       searching with a language code.
+  - name: Payments
+    description: >
+        Simplenight uses Square as the payment platform.  It means our customers needs to include the Square SDK into their apps/websites in order to collect customer’s credit card information instead of sending that sensitive information in clear text which is risky.
+        
+
+        There are Square SDK supporting multiple programming languages,  the most simple one is the Web Payments SDK which is based on html/javascript.
+        
+        
+        This is the Web Payment SDK overview: [Web Payments SDK Overview](https://developer.squareup.com/docs/web-payments/overview) , and also here is a simple example: [Web Payments Quickstart](https://github.com/square/web-payments-quickstart/blob/main/public/examples/card.html)
+
+        
+        In order to be able to perform bookings through Simplenight API, the following square credentials must be used :
+        
+        
+        SANDBOX
+        
+        
+        *square_application_id = sandbox-sq0idb-NC8FV2rTmv18Ca6qccS93*
+        
+        
+        *square_location_id = LCYTDCN92JW8J*
+        
+
+        because it is sandbox mode, test cards can be used for development purpose:  [Sandbox Test Values](https://developer.squareup.com/docs/testing/test-values?preview=true)    
   - name: MultiHotel
     description: >
       **Hotel searching, hotel and room details and availability, booking and
@@ -140,15 +164,20 @@ tags:
       some information from John and Marie, we need customer information (from
       who is buying: first name, last name, phone number, email and country) and
       traveler information (from who is the main traveler: first name, last name
-      and occupancy) and payment information (billing address). Also, we will
-      need information from the payment service, specifically the payment
-      method, payment token and buyer verification token. On our part, we must
-      declare a *transaction_id* (this is an arbitrary string used to identify a
-      request and prevent duplicate bookings). To set the desired room, we will set 
+      and occupancy) and payment information (billing address). 
+      
+      
+      Also, we will need information from the payment service (please read "Payments" section above), specifically the *payment_token* that the payment service returns in the frontend. On our part, we must declare the *payment_method* and a *transaction_id* (this is an arbitrary string used to identify a request and prevent duplicate bookings). 
+      
+      
+      To set the desired room, we will set 
       the information for the *provider_rate* parameter from the *room_rate* object 
       given in */multi/search* response; and we will set the information for the *room_type_name* parameter from *room* of the *room_types* array given in given in */multi/search* response. At last, with all the collected
       data we make a POST request to the endpoint following the example and
-      schema given in the */multi/book* section below. The response will bring
+      schema given in the */multi/book* section below. 
+      
+      
+      The response will bring
       an object nesting the booking status (indicating if the booking was
       successful), *booking_id*, total price, payment information and booking
       reservation information.
@@ -246,10 +275,12 @@ tags:
       (from who is buying: first name, last name, phone number, email and
       country) and traveler information (from who is the main traveler: first
       name, last name and occupancy) and payment information (billing address).
-      Also, we will need information from the payment service, specifically we
-      need payment method, payment token and buyer verification token. On our
-      part, we must declare a *transaction_id* (this is an arbitrary string used
-      to identify a request and prevent duplicate bookings). At last, with all
+      
+      
+      Also, we will need information from the payment service (please read "Payments" section above), specifically the *payment_token* that the payment service returns in the frontend. On our part, we must declare the *payment_method* and a *transaction_id* (this is an arbitrary string used to identify a request and prevent duplicate bookings).
+      
+      
+      At last, with all
       the collected data we make a POST request to the endpoint following the
       example and schema given in the */multi/book* section below. The response
       will bring an object nesting the booking status (indicating if the booking
@@ -359,15 +390,20 @@ tags:
       information from John and Marie, we need customer information (from who is
       buying: first name, last name, phone number, email and country) and
       traveler information (from who is the main traveler: first name, last name
-      and occupancy) and payment information (billing address). Also, we will
-      need information from the payment service, specifically the payment
-      method, payment token and buyer verification token. On our part, we must
-      declare a *transaction_id* (this is an arbitrary string used to identify a
-      request and prevent duplicate bookings). At last, with all the data collected
+      and occupancy) and payment information (billing address). 
+      
+      
+      Also, we will need information from the payment service (please read "Payments" section above), specifically the *payment_token* that the payment service returns in the frontend. On our part, we must declare the *payment_method* and a *transaction_id* (this is an arbitrary string used to identify a request and prevent duplicate bookings). 
+      
+      
+      At last, with all the data collected
       we make a POST request to the endpoint following the example and
       schema given in the */multi/book* section below (please note that the
       code inside the items array, is from the selected variant from the
-      response we got from */multi/variants*). The response will bring an object
+      response we got from */multi/variants*). 
+      
+      
+      The response will bring an object
       nesting the booking status (indicating if the booking was successful),
       *booking_id*, prices, some payment information, status of the reservation,
       name of the activity, ids, date, time and address.
@@ -485,13 +521,18 @@ tags:
       information (from who is buying: first name, last name, phone number,
       email and country) and traveler information (from who is the main
       traveler: first name, last name and occupancy) and payment information
-      (billing address). Also, we will need information from the payment
-      service, specifically the payment method, payment token and buyer
-      verification token. On our part, we must declare a *transaction_id* (this
-      is an arbitrary string used to identify a request and prevent duplicate
-      bookings). Lastly, with all the data collected we make a POST request to
+      (billing address). 
+      
+      
+      Also, we will need information from the payment service (please read "Payments" section above), specifically the *payment_token* that the payment service returns in the frontend. On our part, we must declare the *payment_method* and a *transaction_id* (this is an arbitrary string used to identify a request and prevent duplicate bookings).
+      
+      
+      Lastly, with all the data collected we make a POST request to
       the endpoint following the example and schema given in the */multi/book*
-      section below. The response will bring an object nesting the booking
+      section below. 
+      
+      
+      The response will bring an object nesting the booking
       status (indicating if the booking was successful), *booking_id*, prices,
       some payment information, status of the reservation, hotel reservation
       information, activity reservation information and dining reservation
@@ -588,8 +629,7 @@ paths:
                 product_types:
                   type: array
                   items:
-                    example:
-                      - hotels
+                    example: "hotels"
                 hotel_search:
                   type: object
                   title: Hotel search request
@@ -1841,9 +1881,6 @@ paths:
                     payment_token:
                       type: string
                       example: cnon:card-nonce-ok
-                    buyer_verification_token:
-                      type: string
-                      example: stringtoken
                     billing_address:
                       type: object
                       properties:
@@ -2598,8 +2635,7 @@ paths:
                 product_types:
                   type: array
                   items:
-                    example:
-                      - dining
+                    example: "dining"
                 dining_search:
                   type: object
                   title: Hotel search request
@@ -3275,8 +3311,7 @@ paths:
                 product_types:
                   type: array
                   items:
-                    example:
-                      - activities
+                    example: "activities"
                 activity_search:
                   type: object
                   title: Hotel search request
@@ -4099,9 +4134,6 @@ paths:
                     payment_token:
                       type: string
                       example: cnon:card-nonce-ok
-                    buyer_verification_token:
-                      type: string
-                      example: stringtoken
                     billing_address:
                       type: object
                       properties:
@@ -6596,9 +6628,6 @@ components:
           format: nonce
           example: nonce_12323sa
           description: nonce generated by square
-        buyer_verification_token:
-          type: string
-          description: buyer verification token generated by square
         billing_address:
           $ref: '#/components/schemas/Address'
     HotelBookingResponse:
