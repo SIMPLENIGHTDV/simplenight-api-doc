@@ -1,13 +1,7 @@
 openapi: 3.0.0
 servers:
-  - description: Production
-    url: https://api.simplenight.com/api/v1
   - description: Sandbox
     url: https://api.demo.simplenight.com/api/v1
-  - description: QA
-    url: https://qa-api.simplenight.com/api/v1
-  - description: Dev
-    url: https://dev-api.simplenight.com/api/v1
 info:
   version: '3.0'
   title: Simplenight API
