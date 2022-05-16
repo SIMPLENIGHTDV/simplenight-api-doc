@@ -22,6 +22,8 @@ info:
 
     Please note that every section is expandible and nests the endpoints sections, those have request and response schemas and examples.
 
+    Postman documentation & collection can be imported from [Simplenight API v1 Postman Collections](https://documenter.getpostman.com/view/19055250/Uyr4LLB2#bb91db0f-0bf5-4586-8fcf-83f5f0058f8b)
+
 tags:
   - name: Locations
     description: >
